@@ -7,6 +7,8 @@ import android.widget.ListView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,30 +31,16 @@ public class MainActivity extends AppCompatActivity {
         mFamousPetsList.add("catdog");
         mFamousPetsList.add("meowth");
         mFamousPetsList.add("nyancat");
-        mFamousPetsList.add("your pet here");
+        mFamousPetsList.add("bubba");
         mFamousPetsList.add("charmander");
         mFamousPetsList.add("bulbasaur");
         mFamousPetsList.add("squirtle");
 
 
+        mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mFamousPetsList);
         mListView = (ListView) findViewById(R.id.list_view);
-
-        // sort the arrayList descendingly
-
-        ArrayList<String> displayData = sortDescending(mFamousPetsList);
-
-        // render the list using the android.R.simple_list_row_1 layout
-
-
-
-    }
-
-    private ArrayList<String> sortDescending(ArrayList<String> list) {
-
-        // sort the arrayList descending alphabetically
-        // do not use ArrayList.sort()
-
-        return list;
+        mListView.setAdapter(mArrayAdapter);
+        Collections.sort(mFamousPetsList, Collections.reverseOrder());
 
     }
 }
